@@ -1,11 +1,11 @@
 'use strict';
+var karmaConfigFile = 'test/karma.conf.js';
 
 module.exports = {
 
   'serverport': 3000,
 
   'styles': {
-    'compiler': 'less',
     'src' : 'app/styles/**/*.less',
     'dest': 'build/css'
   },
@@ -18,6 +18,11 @@ module.exports = {
   'images': {
     'src' : 'app/images/**/*',
     'dest': 'build/images'
+  },
+
+  'fonts': {
+    'src' : ['app/fonts/**/*'],
+    'dest': 'build/fonts'
   },
 
   'views': {
@@ -47,7 +52,34 @@ module.exports = {
 
   'test': {
     'karma': 'test/karma.conf.js',
-    'protractor': 'test/protractor.conf.js'
+    'protractor': 'test/protractor.conf.js',
+    'karmaConf': {
+      'unit': {
+        'configFile': karmaConfigFile,
+        'action': 'run'
+      },
+      'dev': {
+        'configFile': karmaConfigFile,
+        'browsers': ['PhantomJS', 'Chrome'],
+        'reporters': ['html', 'growl', 'mocha'],
+        'action': 'watch',
+        'singleRun': false
+      },
+      'teamcity': {
+        'configFile': karmaConfigFile,
+        'browsers': ['PhantomJS'],
+        'reporters': ['teamcity'],
+        'action': 'run',
+        'singleRun': true
+      },
+      'debug': {
+        'configFile': karmaConfigFile,
+        'browsers': ['PhantomJS', 'Chrome'],
+        'reporters': ['html', 'growl', 'mocha'],
+        'action': 'watch',
+        'singleRun': false
+      }
+    }
   }
 
 };

@@ -21,7 +21,12 @@ module.exports = function(config) {
       'karma-browserify',
       'karma-coverage',
       'karma-chrome-launcher',
-      'karma-firefox-launcher'
+      'karma-firefox-launcher',
+      'karma-jasmine-html-reporter',
+      'karma-mocha-reporter',
+      'karma-growl-reporter',
+      'karma-teamcity-reporter',
+      'karma-phantomjs-launcher'
     ],
 
     browserify: {

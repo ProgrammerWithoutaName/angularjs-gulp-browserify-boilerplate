@@ -10,7 +10,7 @@ require('./services/_index');
 require('./directives/_index');
 
 // create and bootstrap application
-angular.element(document).ready(function() {
+(function() {
 
   var requires = [
     'ui.router',
@@ -22,7 +22,6 @@ angular.element(document).ready(function() {
 
   // mount on window for testing
   window.app = angular.module('app', requires);
-
   angular.module('app').constant('AppSettings', require('./constants'));
 
   angular.module('app').config(require('./routes'));
@@ -30,5 +29,4 @@ angular.element(document).ready(function() {
   angular.module('app').run(require('./on_run'));
 
   angular.bootstrap(document, ['app']);
-
-});
+})();

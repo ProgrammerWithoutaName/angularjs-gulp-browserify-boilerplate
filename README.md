@@ -69,7 +69,7 @@ needs to be added directly before any Angular functions/modules. The Gulp tasks 
 
 ### SASS
 
-SASS, standing for 'Syntactically Awesome Style Sheets', is a CSS extension language adding things like extending, variables, and mixins to the language. This boilerplate provides a barebones file structure for your styles, with explicit imports into `app/sass/main.scss`. A Gulp task (discussed later) is provided for compilation and minification of the stylesheets based on this file.
+SASS, standing for 'Syntactically Awesome Style Sheets', is a CSS extension language adding things like extending, variables, and mixins to the language. This boilerplate provides a barebones file structure for your styles, with explicit imports into `app/styles/main.scss`. A Gulp task (discussed later) is provided for compilation and minification of the stylesheets based on this file.
 
 ---
 
@@ -93,6 +93,8 @@ A number of build processes are automatically run on all of our Javascript files
 
 - **JSHint:** Gulp is currently configured to run a JSHint task before processing any Javascript files. This will show any errors in your code in the console, but will not prevent compilation or minification from occurring.
 - **Browserify:** The main build process run on any Javascript files. This processes any of the `require('module')` statements, compiling the files as necessary.
+- **Babelify:** This uses [babelJS](https://babeljs.io/) to provide support for ES6+ features.
+- **Debowerify:** Parses `require()` statements in your code, mapping them to `bower_components` when necessary. This allows you to use and include bower components just as you would npm modules.
 - **ngAnnotate:** This will automatically add the correct dependency injection to any AngularJS files, as mentioned previously.
 - **Uglifyify:** This will minify the file created by Browserify and ngAnnotate.
 
