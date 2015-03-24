@@ -4,8 +4,15 @@ var karmaConfigFile = 'test/karma.conf.js';
 module.exports = {
 
   'serverport': 3000,
-
+  'angular': {
+    'src': ['bower_components/angular/angular+(.min|).js'],
+    'dest': 'build/js/'
+  },
   'styles': {
+    'vendor': {
+      'src': 'app/vendor/**/*.min.css',
+      'dest': 'build/vendor/'
+    },
     'src' : 'app/styles/**/*.less',
     'dest': 'build/css'
   },
@@ -21,6 +28,10 @@ module.exports = {
   },
 
   'fonts': {
+    'vendor': {
+      'src': 'app/vendor/**/fonts/*',
+      'dest': 'build/vendor/'
+    },
     'src' : ['app/fonts/**/*'],
     'dest': 'build/fonts'
   },

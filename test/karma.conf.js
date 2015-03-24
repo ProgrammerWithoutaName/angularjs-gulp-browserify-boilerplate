@@ -31,7 +31,7 @@ module.exports = function(config) {
 
     browserify: {
       debug: true,
-      transform: ['browserify-shim', istanbul({
+      transform: ['browserify-shim', 'bulkify', istanbul({
         ignore: ['**/node_modules/**', '**/test/**'],
       })],
     },
@@ -43,9 +43,9 @@ module.exports = function(config) {
     urlRoot: '/__karma__/',
 
     files: [
-      // 3rd-party resources
-      'node_modules/angular/angular.min.js',
-      'node_modules/angular-mocks/angular-mocks.js',
+      // angular:
+      'bower_components/angular/angular.js',
+      'bower_components/angular-mocks/angular-mocks.js',
 
       // app-specific code
       'app/js/main.js',

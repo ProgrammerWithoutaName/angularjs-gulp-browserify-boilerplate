@@ -4,20 +4,29 @@ var angular = require('angular');
 
 // angular modules
 require('angular-ui-router');
+require('angular-bootstrap-tpls');
+require('angular-bootstrap');
+
+// site modules
 require('./templates');
 require('./controllers/_index');
 require('./services/_index');
 require('./directives/_index');
+
+require('./components/_index');
+require('./features/_index');
 
 // create and bootstrap application
 (function() {
 
   var requires = [
     'ui.router',
+    'ui.bootstrap',
     'templates',
     'app.controllers',
     'app.services',
-    'app.directives'
+    'app.directives',
+    'marketplace.login'
   ];
 
   // mount on window for testing

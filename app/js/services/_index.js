@@ -1,8 +1,10 @@
 'use strict';
 
-var angular = require('angular');
+var angular, bulk;
+
+angular = require('angular');
+bulk = require('bulk-require');
 
 module.exports = angular.module('app.services', []);
 
-// Define the list of services here
-require('./example.js');
+bulk(__dirname, ['./**/!(*_index|*.spec).js']);
