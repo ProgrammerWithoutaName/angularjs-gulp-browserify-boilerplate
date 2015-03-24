@@ -1,13 +1,13 @@
-angularjs-gulp-browserify-boilerplate
+angularjs-gulp-browserify-boilerplate (based off of [jakemmarsh's angularjs-gulp-browserify-boilerplate](https://github.com/jakemmarsh/angularjs-gulp-browserify-boilerplate.git))
 =====================================
 
-A boilerplate using AngularJS, SASS, Gulp, and Browserify that also utilizes [these best AngularJS practices](https://github.com/toddmotto/angularjs-styleguide)  and Gulp best practices from [this resource](https://github.com/greypants/gulp-starter).
+A boilerplate using AngularJS, LESS, Gulp, and Browserify that also utilizes [these best AngularJS practices](https://github.com/toddmotto/angularjs-styleguide)  and Gulp best practices from [this resource](https://github.com/greypants/gulp-starter).
 
 ---
 
 ### Getting up and running
 
-1. Clone this repo from `https://github.com/jakemmarsh/angularjs-gulp-browserify-boilerplate.git`
+1. Clone this repo from `https://github.com/programmerwithoutaname/angularjs-gulp-browserify-boilerplate.git`
 2. Run `npm install` from the root directory
 3. Run `gulp dev` (may require installing Gulp globally `npm install gulp -g`)
 4. Your browser will automatically be opened and directed to the browser-sync proxy address
@@ -20,7 +20,7 @@ Now that `gulp dev` is running, the server is up as well and serving files from 
 This boilerplate uses the latest versions of the following libraries:
 
 - [AngularJS](http://angularjs.org/)
-- [SASS](http://sass-lang.com/)
+- [LESS](http://less-lang.com/)
 - [Gulp](http://gulpjs.com/)
 - [Browserify](http://browserify.org/)
 
@@ -36,13 +36,13 @@ The AngularJS files are all located within `/app/js`, structured in the followin
 
 ```
 /controllers
-  _index.js   (the main module on which to mount all controllers, loaded in main.js)
+  _index.js   (the main module on which all controllers will be mounted, loaded in main.js)
   example.js
 /directives
-  _index.js   (the main module on which to mount all directives, loaded in main.js)
+  _index.js   (the main module on which all directives will be mounted, loaded in main.js)
   example.js
 /services
-  _index.js   (the main module on which to mount all services, loaded in main.js)
+  _index.js   (the main module on which all services will be mounted, loaded in main.js)
   example.js
 constants.js  (any constant values that you want to make available to Angular)
 main.js       (the main file read by Browserify, also where the application is defined and bootstrapped)
@@ -51,13 +51,13 @@ routes.js     (all route definitions and logic)
 templates.js  (this is created via Gulp by compiling your views, and will not be present beforehand)
 ```
 
-Controllers, services, directives, etc. should all be placed within their respective folders and mounted on their respective `_index.js` module. Most other logic can be placed in an existing file, or added in new files as long as it is required inside `main.js`.
+Controllers, services, directives, etc. should all be placed within their respective folders, and will be automatically required via their respective `_index.js` using `bulk-require`. Most other logic can be placed in an existing file, or added in new files as long as it is required inside `main.js`.
 
 ##### Dependency injection
 
 Dependency injection is carried out with the `ng-annotate` library. In order to take advantage of this, a simple comment of the format:
 
-```
+```javascript
 /**
  * @ngInject
  */
@@ -67,9 +67,8 @@ needs to be added directly before any Angular functions/modules. The Gulp tasks 
 
 ---
 
-### SASS
-
-SASS, standing for 'Syntactically Awesome Style Sheets', is a CSS extension language adding things like extending, variables, and mixins to the language. This boilerplate provides a barebones file structure for your styles, with explicit imports into `app/styles/main.scss`. A Gulp task (discussed later) is provided for compilation and minification of the stylesheets based on this file.
+### LESS
+need to add something here, but don't want to leave the original SASS in.
 
 ---
 
@@ -102,9 +101,9 @@ The resulting file (`main.js`) is placed inside the directory `/build/js/`.
 
 ##### Styles
 
-Just one task is necessary for processing our SASS files, and that is `gulp-sass`. This will read the `main.scss` file, processing and importing any dependencies and then minifying the result. This file (`main.css`) is placed inside the directory `/build/css/`.
+Just one plugin is necessary for processing our LESS files, and that is `gulp-less`. This will read the `main.less` file, processing and importing any dependencies and then minifying the result. This file (`main.css`) is placed inside the directory `/build/css/`.
 
-- **gulp-autoprefixer:** Gulp is currently configured to run autoprefixer after compiling the scss.  Autoprefixer will use the data based on current browser popularity and property support to apply prefixes for you. Autoprefixer is recommended by Google and used in Twitter, WordPress, Bootstrap and CodePen.
+- **gulp-autoprefixer:** Gulp is currently configured to run autoprefixer after compiling the less.  Autoprefixer will use the data based on current browser popularity and property support to apply prefixes for you. Autoprefixer is recommended by Google and used in Twitter, WordPress, Bootstrap and CodePen.
 
 ##### Images
 

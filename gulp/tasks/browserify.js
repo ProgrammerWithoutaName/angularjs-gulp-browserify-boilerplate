@@ -13,7 +13,6 @@ var browserify   = require('browserify');
 var uglify       = require('gulp-uglify');
 var handleErrors = require('../util/handleErrors');
 var browserSync  = require('browser-sync');
-var ngAnnotate   = require('browserify-ngannotate');
 
 // Based on: http://blog.avisi.nl/2014/04/25/how-to-keep-a-fast-build-with-browserify-and-reactjs/
 function buildScript(file) {
@@ -35,15 +34,15 @@ function buildScript(file) {
   }
 
   transforms = [
-    ngAnnotate,
     'brfs',
     'bulkify'
   ];
 
+
   transforms.forEach(function(transform) {
     bundler.transform(transform);
   });
-  
+
   function rebundle() {
     var stream = bundler.bundle();
     var createSourcemap = global.isProd && config.browserify.sourcemap;
